@@ -272,11 +272,9 @@ void ErlangGenerator::encode_decode_for_message(Printer& out, const Descriptor* 
     for(int i=0; i< d->field_count();++i)
     {
       field_to_decode_function(out,d->field(i));
-      if(i < d->field_count()-1)
-      {
-        out.PrintRaw(";\n        ");
-      }
+      out.PrintRaw(";\n        ");
     }
+    out.PrintRaw("(_, _, Rec) -> Rec");
     if(d->extension_range_count() > 0)
       out.Print("\n%%      @@protoc_insertion_point($function$)",
 		"function", decode_name(d));
