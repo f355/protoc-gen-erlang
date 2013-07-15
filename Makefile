@@ -10,9 +10,9 @@ default: ${EXE}
 
 ${EXE}: ${SOURCES} ${HEADERS}
 	mkdir -p ${BIN_DIR}
-	g++ -Wall -g -lprotobuf -lprotoc -lpthread -o $@ ${SOURCES}
-	
-	
+	g++ -Wall -g -o $@ ${SOURCES} -lprotobuf -lprotoc -lpthread
+
+
 test: ${EXE}
 	-rm -rf output
 	mkdir output
